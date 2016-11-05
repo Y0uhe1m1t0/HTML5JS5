@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Years to 100</title>
+</head>
+<body>
+	<div>
+		Tip Calculator<br>
+		<input type="text" id="tipTotalBill"/>
+		<input type="text" id="tipNumberOfPeople"/>
+		<input type="button" value="calculate" id="tipButton"/>
+		<div id="tipOutput">&nbsp;</div>
+	</div>
+
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+		  var tipButton = document.getElementById("tipButton");
+		  tipButton.addEventListener("click", function () {
+		    // Button click logic goes here
+		    var tipTotalBillElem = document.getElementById("tipTotalBill");
+		    var tipNumberOfPeopleElem = document.getElementById("tipNumberOfPeople");
+		    var tipOutputElem = document.getElementById("tipOutput");
+		    var billTotal = parseFloat(tipTotalBillElem.value);
+		    var people = parseFloat(tipNumberOfPeopleElem.value);
+		    //add the tip
+		    var totalWithTip = billTotal + (billTotal * 0.1);
+		    //divide the total
+		    var dividedTotal = totalWithTip / people;
+		    if (isNaN(dividedTotal)) {
+		      tipOutputElem.innerHTML = "Please input numbers.";
+		    } else if (isFinite(dividedTotal)) {
+		      tipOutputElem.innerHTML = "Each of you will pay:" + dividedTotal;
+		    } else {
+		      tipOutputElem.innerHTML = "Can't divide by 0.";
+		    }
+		  }, false); // closes the tipButton event handler
+		}, false); // closes the window event handler
+	</script>
+</body>
+</html>
